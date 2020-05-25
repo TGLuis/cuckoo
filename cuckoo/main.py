@@ -248,6 +248,7 @@ def cuckoo_main(max_analysis_count=0):
             stop()
 
 @click.group(invoke_without_command=True)
+@click.option("-v", "--version", is_flag=True, help="Display the version of Cuckoo")
 @click.option("-d", "--debug", is_flag=True, help="Enable verbose logging")
 @click.option("-q", "--quiet", is_flag=True, help="Only log warnings and critical messages")
 @click.option("--nolog", is_flag=True, help="Don't log to file.")
@@ -271,6 +272,10 @@ def main(ctx, debug, quiet, nolog, maxcount, ignore_vuln, user, cwd):
     * Current directory (if the ".cwd" file exists)
     * Default value ("~/.cuckoo")
     """
+    if version:
+        print(cuckoo.misc.version)
+        return
+
     decide_cwd(cwd)
 
     # Drop privileges.
