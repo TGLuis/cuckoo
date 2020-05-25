@@ -576,6 +576,8 @@ class RebootReconstructor(object):
         # Is this a registry key that directly affects reboot persistence?
         for fn, regex in self._reg_regexes:
             if re.match(regex, arguments["regkey"], re.I):
+                if arguments["value"] == '':
+                    continue
                 return fn(self, arguments, flags)
 
         reg_type = flags.get("reg_type", arguments["reg_type"])
