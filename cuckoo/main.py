@@ -257,7 +257,7 @@ def cuckoo_main(max_analysis_count=0):
 @click.option("--user", help="Drop privileges to this user")
 @click.option("--cwd", help="Cuckoo Working Directory")
 @click.pass_context
-def main(ctx, debug, quiet, nolog, maxcount, ignore_vuln, user, cwd):
+def main(ctx, version, debug, quiet, nolog, maxcount, ignore_vuln, user, cwd):
     """Invoke the Cuckoo daemon or one of its subcommands.
 
     To be able to use different Cuckoo configurations on the same machine with
